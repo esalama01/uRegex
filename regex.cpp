@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void shunting_yard(stack<char> &ostack, queue<char> &oqueue, char character){
+void my_alg(stack<char> &ostack, queue<char> &oqueue, char character){
     map<char,int> ops;
     ops['|'] = 1;
     ops['?'] = 2;
@@ -36,7 +36,7 @@ void shunting_yard(stack<char> &ostack, queue<char> &oqueue, char character){
     }
 }
 
-void shunting_yard2(stack<char> &ostack, queue<char> &oqueue, char character){
+void my_alg2(stack<char> &ostack, queue<char> &oqueue, char character){
     if (character == '('){
         ostack.push(character);
     }
@@ -57,10 +57,10 @@ queue<char> shunting(string str){
     queue<char> oqueue;
     while(str[i] != '\0' && str[i] >= 33 && str[i] <= 126){
         if((str[i] == '|') || (str[i] == '?') || str[i] == '*'){
-            shunting_yard(ostack,oqueue,str[i]);
+            my_alg(ostack,oqueue,str[i]);
         }
         else if ((str[i] == '(') || (str[i] == ')')){
-            shunting_yard2(ostack,oqueue,str[i]);
+            my_alg2(ostack,oqueue,str[i]);
         }
         else{
             oqueue.push(str[i]);
